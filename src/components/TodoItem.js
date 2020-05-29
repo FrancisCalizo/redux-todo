@@ -1,14 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const TodoItem = ({ todo, toggleTodo }) => {
+import { toggleTodo } from '../actions/todoActions';
+
+const TodoItem = ({ todo }) => {
+  const dispatch = useDispatch();
+
   return (
     <li>
       <label htmlFor={todo.title}>
         <input
           type="checkbox"
           checked={todo.completed}
-          onChange={toggleTodo}
           id={todo.title}
+          onChange={(e) => dispatch(toggleTodo(e))}
         />
         {todo.title}
       </label>
