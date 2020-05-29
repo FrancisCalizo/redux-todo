@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import TodoItem from './TodoItem';
 
 const Todos = () => {
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todoReducer.todos);
 
   return (
     <div>

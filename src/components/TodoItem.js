@@ -7,7 +7,7 @@ const TodoItem = ({ todo }) => {
   const dispatch = useDispatch();
 
   return (
-    <li>
+    <li style={{ listStyleType: 'none' }}>
       <label htmlFor={todo.title}>
         <input
           type="checkbox"
