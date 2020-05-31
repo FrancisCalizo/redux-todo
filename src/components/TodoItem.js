@@ -1,10 +1,16 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-
+// import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { toggleTodo } from '../actions/todoActions';
 
-const TodoItem = ({ todo }) => {
-  const dispatch = useDispatch();
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleTodo: (e) => dispatch(toggleTodo(e)),
+  };
+};
+
+const TodoItem = ({ todo, toggleTodo }) => {
+  // const dispatch = useDispatch();
 
   return (
     <li style={{ listStyleType: 'none' }}>
@@ -13,7 +19,7 @@ const TodoItem = ({ todo }) => {
           type="checkbox"
           checked={todo.completed}
           id={todo.title}
-          onChange={(e) => dispatch(toggleTodo(e))}
+          onChange={(e) => toggleTodo(e)}
         />
         {todo.title}
       </label>
@@ -21,4 +27,4 @@ const TodoItem = ({ todo }) => {
   );
 };
 
-export default TodoItem;
+export default connect(null, mapDispatchToProps)(TodoItem);
